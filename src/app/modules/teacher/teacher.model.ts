@@ -4,9 +4,10 @@ import { ITeacher } from './teacher.interface'
 const TeacherSchema = new Schema<ITeacher>(
   {
     bio: { type: String, required: true, minlength: 10 },
+    profileImage: { type: String, required: false },
     subjects: { type: [String], required: true },
     gradeLevel: { type: String, required: true },
-    hourlyRate: { type: String, required: true, match: /^\d+(\.\d{1,2})?$/ },
+    hourlyRate: { type: Number, required: true },
     availability: { type: String, required: true },
     address: { type: String, required: true, minlength: 5 },
     tutionType: {

@@ -1,8 +1,9 @@
 export interface ITeacher {
   bio: string
+  profileImage?: string
   subjects: string[]
   gradeLevel: string
-  hourlyRate: string
+  hourlyRate: number
   availability: string
   address: string
   tutionType: 'Online' | 'Offline' | 'Both'

@@ -8,9 +8,10 @@ import { UserModel } from '../auth_user/auth_user.model'
 // save teacher data into db
 const saveTeacherInfoIntoDB = async (
   payload: ITeacher,
-  userInfo: JwtPayload
+  userInfo: JwtPayload,
+  photo?: string
 ) => {
-  const result = await TeacherModel.create(payload)
+  const result = await TeacherModel.create({ ...payload, profileImage: photo })
 
   if (result._id) {
     await UserModel.findOneAndUpdate(

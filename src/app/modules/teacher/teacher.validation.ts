@@ -4,9 +4,7 @@ export const updateTeacherValidation = z.object({
   bio: z.string().min(10, 'Bio must be at least 10 characters long'),
   subjects: z.array(z.string()).min(1, 'At least one subject is required'),
   gradeLevel: z.string().min(1, 'Grade level is required'),
-  hourlyRate: z
-    .string()
-    .regex(/^\d+(\.\d{1,2})?$/, 'Hourly rate must be a valid number'),
+  hourlyRate: z.number(),
   availability: z.string().min(1, 'Availability is required'),
   address: z.string().min(5, 'Address must be at least 5 characters long'),
   tutionType: z.enum(['Online', 'Offline', 'Both']),

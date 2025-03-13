@@ -5,7 +5,11 @@ import manageResponse from '../../utils/manageResponse'
 import { teacherService } from './teacher.service'
 
 const updateTeacherAccount = catchAsync(async (req, res) => {
-  const result = await teacherService.saveTeacherInfoIntoDB(req.body, req.user)
+  const result = await teacherService.saveTeacherInfoIntoDB(
+    req.body,
+    req.user,
+    req.file?.path
+  )
   manageResponse(res, {
     statusCode: 200,
     success: true,
