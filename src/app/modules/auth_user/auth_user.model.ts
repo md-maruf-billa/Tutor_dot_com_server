@@ -3,6 +3,16 @@ import { IUser, IUserModel } from './auth_user.interface'
 
 const userSchema = new Schema<IUser>(
   {
+    referencedModel: {
+      type: String,
+      required: false,
+      enum: ['User', 'Student']
+    },
+    referencedUser: {
+      type: Schema.Types.ObjectId,
+      required: false,
+      refPath: 'referencedModel'
+    },
     name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },

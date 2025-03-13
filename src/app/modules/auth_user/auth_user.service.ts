@@ -8,6 +8,10 @@ import jwt from 'jsonwebtoken'
 
 // save user info in to db
 const saveUserInfoOnDB = async (payload: IUser) => {
+  const user = await UserModel.isUserExist(payload?.email)
+  if (user) {
+    throw new AppError(300, 'User already Exist!!')
+  }
   const hashPassword = bcrypt.hashSync(payload?.password, Number(config.salt!))
   const result = await UserModel.create({ ...payload, password: hashPassword })
   return result

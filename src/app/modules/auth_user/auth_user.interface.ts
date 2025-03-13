@@ -1,4 +1,4 @@
-import { Model } from 'mongoose'
+import { Model, Schema } from 'mongoose'
 
 export interface IUser {
   name: string
@@ -7,6 +7,8 @@ export interface IUser {
   role: 'student' | 'teacher' | 'admin'
   isDeleted: boolean
   accountStatus: 'active' | 'block'
+  referencedModel: 'teacher' | 'student'
+  referencedUser?: Schema.Types.ObjectId
 }
 
 export interface ILoginUser {
